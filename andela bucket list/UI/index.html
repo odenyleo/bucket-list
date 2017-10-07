@@ -1,0 +1,81 @@
+ <html>
+ <head>
+ 	<div id = "front_block">
+ 		<div id ="front_header">
+ 			<u>LEON BUCKET LIST</u>
+
+ 		</div>
+
+
+
+ 	<style type="text/css">
+
+ 	body{font-family: verdana; font-size: 15px;background-image: url("image/4.jpg"); background-size: cover; background-attachment: scroll;}
+ 	div#back_glob{ background-color: transparent; border : 1px solid #25b2d5; width: 350px; margin: 100px auto; box-shadow: 1px 0px 15px #25b2d5;}
+ 	input{display: block; margin: 10px;}
+ 	div#back_header{background-color:#25b2d5; text-align: center; font-size: 22px; font-weight: bold; color: white; padding: 20px; }
+ 	input[type=text] , input[type=password] {font-size:15px; padding: 10px; border-radius: 3px; border: 1px solid #ddd;border : 1px solid #25b2d5; box-shadow: 1px 0px 15px #25b2d5;}
+ 	input[type=submit]{background-color: #25b2d5; padding: 5px 10px 5px 10px;border-radius: 3px;  border: 1px solid #319db8; color: white; font-weight: bold;border : 1px solid #25b2d5; box-shadow: 1px 0px 15px #25b2d5; }
+ 	input[type=button]{background-color: #25b2d5; padding: 5px 10px 5px 10px;border-radius: 3px;  border: 1px solid #319db8; color: white; font-weight: bold;border : 1px solid #25b2d5; box-shadow: 1px 0px 15px #25b2d5; }
+ 	div#back_form {display: flex; justify-content: center;}
+ 	div#front_block{ background:white; width: 330px;height:50px; margin: 0 auto;}
+ 	div#front_header{background-color:white; text-align: center; font-size: 32px; font-weight: bold; color: #25b2d5; padding: 10px; font-family: algerian;}
+
+ 	</style>
+
+ 	<script type="text/javascript">
+ 	function submitfuction(){
+
+ 		var x=document.form["myform"] ["username"] .value;
+ 		var y=document.form["myform"] ["password"] .value;
+ 		if (x==null || x=="" || y==null || y=="") {
+
+ 			alert("both fields cannot be empty");
+ 			}
+	 		else{
+	 			if (x=="wembi") {
+
+	 				if (y=="12345") {
+
+	 					alert("login succesfull");
+	 					}
+	 					else{alert("password do not match");
+
+	 					}
+
+			 		}
+			 	else{alert("user do not exist")
+			 		}
+		 		}
+
+	 	}
+ 		
+ 	
+ 	</script>
+
+
+ </head>
+
+ <body>
+ 	<div id = "back_glob">
+
+ 		<div id = "back_header">
+ 			LOGIN
+ 		</div>
+ 		<div id = "back_form">
+
+
+ 			<form method = "POST" action="signup.html" onsubmit="submitfuction()" name="myform"/>
+ 				<input type = "text" name = "username" placeholder = "username"  required="on" />
+ 				<input type = "password" name = "pass" placeholder = "password" required="on" />
+ 				<input type = "submit" name = "valid" value = "Login"  formaction="creat_bucket.html"/>
+ 				<a href="signup.html"><input type = "button" name = "valid" value = "Sign Up"/></a>
+ 			</form> 
+
+ 		</div>
+
+ 	</div>
+
+
+ </body>
+ </html>

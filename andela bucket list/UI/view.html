@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<meta charset="windows 1252">
+	<meta name="viewpoint">
+	<style type="text/css" content= "width=device-width, initial-scale=1.0">
+		
+		.container{overflow: hidden;}
+		.tab{float: left;}
+		.tab-2{margin-left: 250px}
+		.tab-2 input{display: block; margin-bottom: 10px}
+		tr{transition: all .25s ease-in-out}
+		tr :hover{background-color: #25b2d5; cursor: pointer;}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="tab tab-1">
+			<table id="table" border="3">
+				<tr>
+					<th>first name</th>
+					<th>last name</th>
+					<th>age</th>
+				</tr>
+				<tr>
+					<th>A1</th>
+					<th>B1</th>
+					<th>10</th>
+				</tr>
+				<tr>
+					<th>A3</th>
+					<th>B3</th>
+					<th>30</th>
+				</tr>
+				<tr>
+					<th>A2</th>
+					<th>B2</th>
+					<th>20</th>
+				</tr>
+			</table>
+		</div>
+		<div class="tab-2">
+			first name:<input type="text" name="fname" id="fname">
+			last name:<input type="text" name="lname" id="lname">
+			age:<input type="number" name="age" id="age">
+
+
+			<button onclick="addHtmlTableRow">add</button>
+			<button onclick="editHtmlTableSelectedRow()">edit</button>
+			<button onclick="removeHtmlTableSelectedRow()">remove</button>
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+			var rINDEX,
+				table=document.getElementById("table");
+
+
+			//check the empty input
+			function CheckEmptyInput()
+			{
+				var isEmpty= false,
+					fname = document.getElementById("fname").value,
+					lname = document.getElementById("lname").value,
+					age = document.getElementById("age").value;
+
+				if (fname===""){
+					alert("first name cannot be empty");
+					isEmpty = true; 
+				}
+				else if (lname===""){
+					alert("last name cannot be empty");
+					isEmpty = true; 
+				}
+				else if (age===""){
+					alert("age cannot be empty");
+					isEmpty = true; 
+				}
+				return isEmpty
+
+			}
+			//add row
+
+			function addHtmlTableRow()
+			{
+
+				//get the table by Id
+				//create a new row and cells
+				//get value from input text
+				//get the values into row cells 
+				if(!CheckEmptyInput()){
+					var table=document.getElementById("table"),
+						newRow=table.insertRow(table.length),
+						cell1=newRow.insertRow(0),
+						cell2=newRow.insertRow(1),
+						cell3=newRow.insertRow(2),
+
+						fname=document.getElementById("fname").value,
+						lname=document.getElementById("lname").value,
+						age=document.getElementById("age").value;
+
+
+						cell1.innerHTML=fname
+						cell2.innerHTML=lname
+						cell3.innerHTML=age
+						//call the fuction to set the event to the new row
+						selectedRowToInput () ;
+				}
+
+
+					
+			}
+			//display selected row data into input text
+
+			function selectedRowToInput()
+			{
+
+				var  rINDEX,table=document.getElementById("table");
+				for (var i =1 ; i < table.rows.length; i++)
+				{
+					table.rows[i]. onclick = function()
+					{
+						//get the selected row index
+						rINDEX=this.rowindex;
+
+						document.getElementById("fname").value=this.cells[0].innerHTML;
+						document.getElementById("lname").value=this.cells[1].innerHTML;
+						document.getElementById("age").value=this.cells[2].innerHTML;
+
+					}
+				}
+			}
+			selectedRowToInput();
+
+
+			function editHtmlTableSelectedRow()
+			{		if(!CheckEmptyInput()) {
+				var fname=document.getElementById("fname").value,
+					lname=document.getElementById("lname").value,
+				 	age=document.getElementById("age").value,
+
+					table.rows[rINDEX].cells[0].innerHTML = fname;
+					table.rows[rINDEX].cells[1].innerHTML = lname;
+					table.rows[rINDEX].cells[2].innerHTML = age;
+					}
+
+			}
+			 function removeHtmlTableSelectedRow()
+			 {
+			 	table.deleteRow(rindex);
+			 	//clear input text
+			 	document.getElementById("fname").value = "",
+				document.getElementById("lname").value = "" ,
+				document.getElementById("age").value = "",
+			 }
+
+	</script>
+
+</body>
+</html>
